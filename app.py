@@ -21,3 +21,19 @@ def enviar():
 
 if __name__ == "__main__":
     app.run()
+ @app.route("/api/enviar", methods=["GET", "POST"])
+def enviar():
+    if request.method == "GET":
+        return "Ruta activa, esperando POST"
+    
+    datos = request.get_json()
+    nombre = datos.get("nombre")
+    email = datos.get("email")
+    mensaje = datos.get("mensaje")
+
+    print("Nuevo mensaje recibido:")
+    print("Nombre:", nombre)
+    print("Email:", email)
+    print("Mensaje:", mensaje)
+
+    return "Mensaje recibido correctamente"
